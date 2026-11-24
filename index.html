@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>প্রত্যাবর্তন ২.০ | Prottaborton 2.0 — ১৬ ডিসেম্বর ২০২৬</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="প্রত্যাবর্তন ২.০ | Prottaborton 2.0 — জয় বাংলা, জয় বঙ্গবন্ধু">
+  <meta name="description" content="একটি ঐতিহাসিক প্রত্যাবর্তন। জয় বাংলা, জয় বঙ্গবন্ধু। ১৬ ডিসেম্বর ২০২৬ শুরু হচ্ছে প্রত্যাবর্তন ২.০। লাইভ কাউন্টডাউন।">
+  <meta name="keywords" content="প্রত্যাবর্তন ২.০, Prottaborton 2.0, বাংলাদেশ, ১৬ ডিসেম্বর ২০২৬, বিজয় দিবস, শেখ হাসিনা, Sheikh Hasina, Bangladesh, Countdown">
+  <meta name="author" content="প্রত্যাবর্তন ২.০ টিম">
+  <meta name="theme-color" content="#071C16">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prottaborton2.org/">
+  <meta property="og:title" content="প্রত্যাবর্তন ২.০ — জয় বাংলা, জয় বঙ্গবন্ধু">
+  <meta property="og:description" content="১৬ ডিসেম্বর ২০২৬। লাইভ কাউন্টডাউন চলছে।">
+  <meta property="og:image" content="assets/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="প্রত্যাবর্তন ২.০ — জয় বাংলা, জয় বঙ্গবন্ধু">
+  <meta property="twitter:description" content="১৬ ডিসেম্বর ২০২৬। লাইভ কাউন্টডাউন চলছে।">
+  <meta property="twitter:image" content="assets/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+  <!-- Google Fonts: Hind Siliguri (Bengali) & Bebas Neue + Outfit (Numbers) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Cinematic Background Effects -->
+  <div class="ambient-fx-layer" aria-hidden="true">
+    <canvas id="particleCanvas"></canvas>
+    <div class="fog-drift-layer fog-drift-1"></div>
+    <div class="fog-drift-layer fog-drift-2"></div>
+    <div class="film-grain"></div>
+    <div class="vignette-overlay"></div>
+    <div class="radial-ambient-green"></div>
+    <div class="radial-ambient-red"></div>
+    <!-- Flying doves in background -->
+    <div class="birds-container">
+      <div class="bird bird-1"></div>
+      <div class="bird bird-2"></div>
+      <div class="bird bird-3"></div>
+      <div class="bird bird-4"></div>
+    </div>
+  </div>
+
+  <!-- Header Controls (Sound, Numeral toggle, Share) -->
+  <header class="top-nav" role="banner">
+    <div class="nav-container">
+      <div class="brand-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">অফিসিয়াল ক্ষণগণনা</span>
+      </div>
+      
+      <div class="nav-actions">
+        <!-- Number format switch: EN / BN -->
+        <button id="numeralToggle" class="nav-icon-btn" title="সংখ্যা পরিবর্তন (English / বাংলা)" aria-label="সংখ্যা পরিবর্তন করুন">
+          <span class="btn-label-text">সংখ্যা:</span>
+          <span id="numeralModeLabel" class="active-badge">EN</span>
+        </button>
+
+        <!-- Ambient sound synthesizer toggle -->
+        <button id="soundToggle" class="nav-icon-btn" title="সিনেমাটিক সাউন্ড অন/অফ" aria-label="সাউন্ড চালু বা বন্ধ করুন">
+          <svg class="sound-icon-on" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <svg class="sound-icon-off hidden" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <span id="soundStatusText">সাউন্ড</span>
+        </button>
+
+        <!-- Share Trigger -->
+        <button id="quickShareBtn" class="nav-icon-btn" title="কাউন্টডাউন শেয়ার করুন" aria-label="শেয়ার করুন">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CINEMATIC HERO SECTION -->
+  <main id="mainContent">
+    <section class="hero-section" id="hero" aria-label="প্রত্যাবর্তন ২.০ হিরো ও কাউন্টডাউন">
+      <div class="hero-inner">
+
+        <!-- Screen-reader Accessible Heading (Visual title & quotes are rendered in the master artwork) -->
+        <h1 class="sr-only">প্রত্যাবর্তন ২.০ — আবারও ফিরবে সাহস, স্বপ্ন আর সংগ্রামের গল্প। জয় বাংলা, জয় বঙ্গবন্ধু। ১৬ ডিসেম্বর ২০২৬।</h1>
+
+        <!-- Master Hero Art Artwork (Authentic portrait, monument, flag, title, brush banner) -->
+        <div class="hero-visual-frame" id="heroVisualFrame">
+          <picture>
+            <source srcset="assets/hero-art-2x.webp 2x, assets/hero-art.webp 1x" type="image/webp">
+            <source srcset="assets/hero-art-2x.png 2x, assets/hero-art.png 1x" type="image/png">
+            <img 
+              src="assets/hero-art.png" 
+              alt="প্রত্যাবর্তন ২.০ — জয় বাংলা, জয় বঙ্গবন্ধু। শেখ হাসিনার প্রতিকৃতি, জাতীয় স্মৃতিসৌধ ও উড়ন্ত লাল-সবুজের পতাকা।" 
+              class="hero-art-img"
+              width="959" 
+              height="592"
+              priority="high"
+              loading="eager"
+            >
+          </picture>
+          <div class="hero-glow-backlight"></div>
+        </div>
+
+        <!-- Hero Tagline: জয় বাংলা, জয় বঙ্গবন্ধু -->
+        <div class="hero-tagline-wrapper">
+          <p class="hero-tagline">জয় বাংলা, জয় বঙ্গবন্ধু</p>
+        </div>
+
+        <!-- LIVE FUNCTIONAL COUNTDOWN MODULE -->
+        <div class="countdown-card-wrapper" id="countdownWrapper">
+          <div class="countdown-pill" id="countdownPill" role="timer" aria-live="polite">
+            
+            <!-- Days -->
+            <div class="time-col" id="colDays">
+              <div class="number-box">
+                <span class="time-digit" id="valDays">--</span>
+              </div>
+              <span class="time-label" id="labelDays">DAYS</span>
+            </div>
+
+            <div class="time-divider" aria-hidden="true"></div>
+
+            <!-- Hours -->
+            <div class="time-col" id="colHours">
+              <div class="number-box">
+                <span class="time-digit" id="valHours">--</span>
+              </div>
+              <span class="time-label" id="labelHours">HOURS</span>
+            </div>
+
+            <div class="time-divider" aria-hidden="true"></div>
+
+            <!-- Minutes -->
+            <div class="time-col" id="colMinutes">
+              <div class="number-box">
+                <span class="time-digit" id="valMinutes">--</span>
+              </div>
+              <span class="time-label" id="labelMinutes">MINUTES</span>
+            </div>
+
+            <div class="time-divider" aria-hidden="true"></div>
+
+            <!-- Seconds -->
+            <div class="time-col" id="colSeconds">
+              <div class="number-box">
+                <span class="time-digit pulse-digit" id="valSeconds">--</span>
+              </div>
+              <span class="time-label" id="labelSeconds">SECONDS</span>
+            </div>
+
+          </div>
+
+          <script>
+            (function(){
+              try {
+                var diff = Math.max(0, new Date('2026-12-16T12:00:00+06:00').getTime() - Date.now());
+                var d = Math.floor(diff / 86400000);
+                var h = Math.floor((diff % 86400000) / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('valDays').textContent = String(d).padStart(2, '0');
+                document.getElementById('valHours').textContent = String(h).padStart(2, '0');
+                document.getElementById('valMinutes').textContent = String(m).padStart(2, '0');
+                document.getElementById('valSeconds').textContent = String(s).padStart(2, '0');
+              } catch(e) {}
+            })();
+          </script>
+
+          <!-- Zero State Message (Revealed when countdown finishes) -->
+          <div class="countdown-zero-state hidden" id="countdownZeroState">
+            <div class="zero-state-icon">🇧🇩</div>
+            <h2 class="zero-state-title">সময় এসে গেছে। প্রত্যাবর্তন শুরু।</h2>
+            <p class="zero-state-subtitle">আজ ১৬ ডিসেম্বর — বিজয়ের দিনে ঐতিহাসিক ক্ষণের সূচনা</p>
+          </div>
+        </div>
+
+        <!-- CALL TO ACTION (CTA) BUTTON -->
+        <div class="cta-wrapper">
+          <button class="cta-pill-btn" id="ctaBtn" aria-haspopup="dialog" aria-controls="modalReminder">
+            <span class="cta-text">আসছে...</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+            <span class="cta-shimmer" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- Scroll Down Cue -->
+        <a href="#about" class="scroll-cue-btn" aria-label="প্রেক্ষাপট ও বিস্তারিত তথ্য দেখুন">
+          <span class="scroll-cue-text">প্রেক্ষাপট ও তাৎপর্য</span>
+          <svg class="scroll-arrow-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: PREKKHAPOT (THE STORY BEHIND THE RETURN) -->
+    <section class="prekkhapot-section" id="about" aria-label="প্রেক্ষাপট — প্রত্যাবর্তন ২.০">
+      
+      <!-- Subtle Background Map Silhouette & Ambiance -->
+      <div class="prekkhapot-map-bg" aria-hidden="true">
+        <svg viewBox="0 0 500 650" fill="none" xmlns="http://www.w3.org/2000/svg" class="bd-map-svg">
+          <!-- Stylized Bangladesh Map Silhouette -->
+          <path d="M190 40C240 35 285 50 330 45C370 40 405 60 420 95C435 130 410 165 415 200C420 235 450 265 460 300C470 335 440 375 425 410C410 445 420 480 395 515C370 550 330 575 300 605C270 635 230 630 195 610C160 590 130 550 115 515C100 480 115 440 100 405C85 370 65 335 60 295C55 255 75 220 90 185C105 150 120 115 145 85C160 65 175 45 190 40Z" fill="url(#mapGrad)" opacity="0.6"/>
+          <!-- National Flag Circle Accent -->
+          <circle cx="260" cy="300" r="95" fill="rgba(181, 18, 27, 0.08)"/>
+          <defs>
+            <linearGradient id="mapGrad" x1="260" y1="40" x2="260" y2="635" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#F5B942" stop-opacity="0.12"/>
+              <stop offset="50%" stop-color="#071C16" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#B5121B" stop-opacity="0.15"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="container prekkhapot-container">
+        
+        <!-- Section Header -->
+        <div class="editorial-header">
+          <div class="header-pre-title">
+            <span class="editorial-tag">প্রেক্ষাপট</span>
+            <span class="editorial-sub-en">THE STORY BEHIND THE RETURN</span>
+          </div>
+          <h2 class="editorial-main-heading">প্রেক্ষাপট — প্রত্যাবর্তন ২.০</h2>
+          <div class="golden-accent-separator" aria-hidden="true">
+            <span class="sep-line"></span>
+            <span class="sep-diamond">◆</span>
+            <span class="sep-line"></span>
+          </div>
+          <p class="editorial-subheading">
+            ষড়যন্ত্রের অন্ধকার পেরিয়ে স্বদেশ প্রত্যাবর্তনের প্রত্যয়
+          </p>
+        </div>
+
+        <!-- Visually Distinctive Connected Golden Timeline -->
+        <div class="historic-timeline-module" aria-label="ঐতিহাসিক পরিক্রমা ও মাইলফলক">
+          <div class="timeline-track-bar" aria-hidden="true"></div>
+          
+          <div class="timeline-nodes-grid">
+            
+            <!-- Date 1: ৫ আগস্ট ২০২৪ -->
+            <div class="timeline-card" data-step="1">
+              <div class="node-marker-wrap">
+                <div class="node-marker">
+                  <span class="marker-core"></span>
+                </div>
+              </div>
+              <div class="card-inner">
+                <span class="marker-date">৫ আগস্ট ২০২৪</span>
+                <h4 class="marker-heading">রাজনৈতিক সংকট ও দেশত্যাগ</h4>
+                <p class="marker-summary">
+                  দেশি-বিদেশি ষড়যন্ত্র ও তীব্র রাজনৈতিক অস্থিরতার মুখে ১৫ বছরের সরকার প্রধান শেখ হাসিনার দেশত্যাগ।
+                </p>
+              </div>
+            </div>
+
+            <!-- Date 2: ১৭ নভেম্বর ২০২৫ -->
+            <div class="timeline-card" data-step="2">
+              <div class="node-marker-wrap">
+                <div class="node-marker">
+                  <span class="marker-core"></span>
+                </div>
+              </div>
+              <div class="card-inner">
+                <span class="marker-date">১৭ নভেম্বর ২০২৫</span>
+                <h4 class="marker-heading">ট্রাইব্যুনালের রায় ও সমর্থকদের প্রশ্ন</h4>
+                <p class="marker-summary">
+                  আন্তর্জাতিক অপরাধ ট্রাইব্যুনালে অনুপস্থিতিতে রায় ঘোষণা; বিচারপ্রক্রিয়ার নিরপেক্ষতা নিয়ে সমর্থকদের প্রশ্ন ও প্রতিরোধ।
+                </p>
+              </div>
+            </div>
+
+            <!-- Date 3: ১৬ ডিসেম্বর ২০২৬ (The Hero Target) -->
+            <div class="timeline-card hero-timeline-card" data-step="3">
+              <div class="node-marker-wrap">
+                <div class="node-marker hero-node-marker">
+                  <span class="marker-core hero-core"></span>
+                </div>
+              </div>
+              <div class="card-inner hero-card-inner">
+                <span class="marker-date hero-date">১৬ ডিসেম্বর ২০২৬</span>
+                <h4 class="marker-heading hero-heading">মহান বিজয় দিবস — প্রত্যাবর্তন ২.০</h4>
+                <p class="marker-summary hero-summary">
+                  সব প্রতিকূলতা ও শঙ্কা জয় করে লাখো মানুষের অপেক্ষার অবসান ঘটিয়ে ঐতিহাসিক স্বদেশ প্রত্যাবর্তনের ঘোষণা।
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Long-Form Documentary Historical Narrative -->
+        <article class="documentary-narrative-article" id="narrativeArticle">
+          
+          <div class="narrative-body" id="narrativeBody">
+            
+            <p class="narrative-p lead-drop">
+              বাংলাদেশের ইতিহাসে ২০২৪ সালের জুলাই–আগস্ট এক গভীর রাজনৈতিক পটপরিবর্তনের অধ্যায়।
+            </p>
+
+            <p class="narrative-p">
+              দেশি-বিদেশি ষড়যন্ত্র, রাজনৈতিক অপপ্রচার এবং পরিকল্পিত অস্থিরতার ধারাবাহিকতায় ২০২৪ সালের জুলাইয়ের আন্দোলন এক ভয়াবহ রাজনৈতিক সংকটে রূপ নেয়। সেই সংকটের চূড়ান্ত পরিণতিতে <strong class="date-highlight">৫ আগস্ট ২০২৪</strong> তারিখে তৎকালীন প্রধানমন্ত্রী শেখ হাসিনা দেশত্যাগে বাধ্য হন। দীর্ঘ ১৫ বছরের রাজনৈতিক নেতৃত্বের অবসান ঘটে। বঙ্গবন্ধুর হাতে গড়া সংগঠন বাংলাদেশ আওয়ামী লীগ পড়ে এক কঠিন সময়ের মুখে।
+            </p>
+
+            <div class="narrative-interlude">
+              <span class="interlude-text">শুরু হয় এক নতুন অধ্যায়।</span>
+            </div>
+
+            <p class="narrative-p statement-p">
+              দুই বছরের নির্বাসন, অনিশ্চয়তা ও প্রতিকূলতা।
+            </p>
+
+            <p class="narrative-p">
+              এই সময়ে আওয়ামী লীগের অসংখ্য নেতাকর্মী মামলা, গ্রেপ্তার, রাজনৈতিক চাপ ও নিরাপত্তাহীনতার মুখোমুখি হয়েছেন। দলটির রাজনৈতিক কার্যক্রমও কঠোর বিধিনিষেধের মধ্যে পড়েছে। সমর্থকদের কাছে এটি কেবল একটি রাজনৈতিক দলের সংকট নয়, বরং তাদের দীর্ঘদিনের রাজনৈতিক আদর্শ ও সংগঠনের অস্তিত্ব রক্ষার সংগ্রাম।
+            </p>
+
+            <p class="narrative-p">
+              অন্যদিকে, শেখ হাসিনার বিরুদ্ধে আন্তর্জাতিক অপরাধ ট্রাইব্যুনালে বিচারপ্রক্রিয়া চলে। <strong class="date-highlight">১৭ নভেম্বর ২০২৫</strong> তাঁকে অনুপস্থিতিতে মৃত্যুদণ্ড দেওয়া হয়। আওয়ামী লীগপন্থী সমর্থকেরা এই বিচারপ্রক্রিয়ার নিরপেক্ষতা ও রাজনৈতিক প্রভাব নিয়ে প্রশ্ন তুলেছেন।
+            </p>
+
+            <div class="narrative-interlude">
+              <span class="interlude-text">তবুও সমর্থকদের প্রত্যাশা থেমে থাকেনি।</span>
+            </div>
+
+            <div class="narrative-focal-moment">
+              <div class="focal-year">এবার সামনে <span class="gold-year">১৬ ডিসেম্বর ২০২৬</span>।</div>
+              <div class="focal-occasion">মহান বিজয় দিবস।</div>
+            </div>
+
+            <p class="narrative-p">
+              যে বিজয় এসেছিল লাখো শহীদের রক্তের বিনিময়ে, যে পতাকার জন্য বঙ্গবন্ধু একটি স্বাধীন রাষ্ট্রের স্বপ্ন দেখেছিলেন, সেই ঐতিহাসিক দিনেই শেখ হাসিনা দেশে ফেরার প্রত্যাশা ও পরিকল্পনার কথা জানিয়েছেন।
+            </p>
+
+            <p class="narrative-p">
+              মাথার ওপর মৃত্যুদণ্ডের রায়, গ্রেপ্তারের আশঙ্কা এবং রাজনৈতিক অনিশ্চয়তা—এতসব প্রতিকূলতার মধ্যেও তাঁর দেশে ফেরার ইচ্ছার ঘোষণা সমর্থকদের কাছে সাহস ও প্রত্যয়ের প্রতীক।
+            </p>
+
+            <!-- Callout / Evocative Stanza -->
+            <div class="narrative-manifesto-callout">
+              <p class="manifesto-lead">এটি শুধু একজন নেত্রীর ফিরে আসার প্রত্যাশা নয়।</p>
+              <ul class="manifesto-list">
+                <li><span class="bullet-dot"></span>এটি লাখো সমর্থকের অপেক্ষা।</li>
+                <li><span class="bullet-dot"></span>এটি একটি রাজনৈতিক সংগঠনের পুনরুত্থানের আকাঙ্ক্ষা।</li>
+                <li><span class="bullet-dot"></span>এটি বঙ্গবন্ধুর আদর্শে বিশ্বাসী মানুষের রাজনৈতিক অধিকার ও ভবিষ্যৎ নিয়ে নতুন করে স্বপ্ন দেখার প্রত্যয়।</li>
+              </ul>
+            </div>
+
+            <p class="narrative-p philosophy-p">
+              ইতিহাসের চাকা কখনো থেমে থাকে না। সময়ের পরিবর্তনে অনেক হিসাব বদলায়, অনেক অধ্যায়ের নতুন সূচনা হয়।
+            </p>
+
+            <!-- Climax Box -->
+            <div class="narrative-climax-card">
+              <div class="climax-date-display">১৬ ডিসেম্বর ২০২৬।</div>
+              <p class="climax-sub-phrase">একটি তারিখ, একটি প্রতীক্ষা, একটি প্রত্যাবর্তনের প্রত্যাশা।</p>
+              
+              <div class="climax-slogans-row">
+                <span class="slogan-primary">জয় বাংলা, জয় বঙ্গবন্ধু।</span>
+                <span class="slogan-secondary">বাংলাদেশ চিরজীবী হোক।</span>
+              </div>
+              
+              <div class="climax-brand-en">PROTTABORTON 2.0 — THE RETURN.</div>
+            </div>
+
+          </div>
+
+          <!-- Discreet Read More / Compact Toggle Control -->
+          <div class="narrative-toggle-wrapper">
+            <button class="narrative-toggle-btn" id="narrativeToggleBtn" aria-expanded="true" aria-controls="narrativeBody">
+              <span id="narrativeToggleText">সংক্ষেপ করুন</span>
+              <svg class="toggle-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+            </button>
+          </div>
+
+        </article>
+
+        <!-- Three Core Pillars -->
+        <div class="pillars-grid">
+          
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <span class="pillar-num">০১</span>
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3 class="pillar-title">স্মৃতি (Heritage)</h3>
+            <p class="pillar-desc">
+              বাঙালি জাতির আত্মপরিচয়, রক্তস্নাত মুক্তিযুদ্ধ এবং লাখো শহীদের অবিনাশী আত্মত্যাগের স্মারক। অতীতে অর্জিত প্রতিটি বিজয়ই আমাদের চলার পাথেয়।
+            </p>
+          </div>
+
+          <div class="pillar-card highlight-card">
+            <div class="pillar-icon-box highlight-icon">
+              <span class="pillar-num">০২</span>
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="pillar-title">অনুপ্রেরণা (Inspiration)</h3>
+            <p class="pillar-desc">
+              সংকট, ষড়যন্ত্র ও প্রতিকূলতাকে জয় করে নির্ভীক চিত্তে ঘুরে দাঁড়ানোর অদম্য সাহস। পিতার আদর্শ ও দেশপ্রেমের জ্বলন্ত মশাল এগিয়ে নেওয়ার শক্তি।
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <span class="pillar-num">০৩</span>
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="pillar-title">নতুন প্রত্যয় (Resolve)</h3>
+            <p class="pillar-desc">
+              একটি মর্যাদাশীল, আধুনিক, আত্মনির্ভরশীল ও সার্বভৌম বাংলাদেশ পুনর্গঠনের চূড়ান্ত শপথ। নতুন প্রজন্মের হাত ধরে সমৃদ্ধির জয়যাত্রা।
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Historic Significance Banner -->
+        <div class="historic-banner">
+          <div class="banner-content">
+            <div class="banner-badge">বিজয়ের শপথ</div>
+            <h3 class="banner-title">কেন ১৬ ডিসেম্বর ২০২৬?</h3>
+            <p class="banner-text">
+              ১৬ ডিসেম্বর আমাদের আত্মমর্যাদার প্রতীক। ১৯৭১ সালের এই দিনে বিশ্ব মানচিত্রে অভ্যুদয় ঘটেছিল স্বাধীন সার্বভৌম বাংলাদেশের। বিজয়ের সুবর্ণ যুগ পেরিয়ে ২০২৬ সালের এই দিনে শুরু হবে বাঙালির দ্বিতীয় জাগরণ — <strong>প্রত্যাবর্তন ২.০</strong>।
+            </p>
+          </div>
+          <div class="banner-cta">
+            <button class="gold-action-btn open-modal-btn">
+              <span>রিমাইন্ডার সেট করুন</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Tribute Wall -->
+        <div class="tribute-section">
+          <div class="tribute-header">
+            <h3 class="tribute-heading">আপনার অনুভূতি ও প্রত্যাশা লিখুন</h3>
+            <p class="tribute-sub">প্রত্যাবর্তন ২.০ নিয়ে আপনার ভাবনা ও শুভকামনা দেশবাসীর সাথে ভাগ করে নিন।</p>
+          </div>
+
+          <form id="tributeForm" class="tribute-form">
+            <div class="form-row">
+              <input type="text" id="tributeAuthor" placeholder="আপনার নাম (ঐচ্ছিক)" class="custom-input" maxlength="40">
+              <input type="text" id="tributeDistrict" placeholder="জেলা / শহর (ঐচ্ছিক)" class="custom-input" maxlength="30">
+            </div>
+            <div class="form-textarea-row">
+              <textarea id="tributeMsg" placeholder="আপনার বার্তা বা অনুভূতি লিখুন..." required class="custom-textarea" rows="3" maxlength="280"></textarea>
+            </div>
+            <div class="form-submit-row">
+              <button type="submit" class="submit-tribute-btn">
+                <span>বার্তা পাঠান</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- Tributes Feed -->
+          <div class="tributes-feed" id="tributesFeed">
+            <!-- Dynamic comments injected via script.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL: REMINDER, CALENDAR & SHARE -->
+  <div class="modal-backdrop hidden" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="বন্ধ করুন">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-badge">১৬ ডিসেম্বর ২০২৬</div>
+        <h3 class="modal-title" id="modalTitle">প্রত্যাবর্তন ২.০ — রিমাইন্ডার ও শেয়ার</h3>
+        <p class="modal-desc">ঐতিহাসিক এই মাহেন্দ্রক্ষণ যেন আপনার চোখ এড়িয়ে না যায়, এখনই ক্যালেন্ডারে যুক্ত করুন।</p>
+      </div>
+
+      <div class="modal-actions-grid">
+        
+        <!-- Google Calendar Button -->
+        <a id="addToGoogleCalBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-tile">
+          <div class="tile-icon-box google-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="tile-info">
+            <span class="tile-title">Google Calendar</span>
+            <span class="tile-sub">ইভেন্ট সিঙ্ক করুন</span>
+          </div>
+          <span class="tile-arrow">→</span>
+        </a>
+
+        <!-- iCal / Apple Calendar Download -->
+        <button id="downloadiCalBtn" class="action-tile">
+          <div class="tile-icon-box apple-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </div>
+          <div class="tile-info">
+            <span class="tile-title">Apple / Outlook .ics</span>
+            <span class="tile-sub">ক্যালেন্ডার ফাইল ডাউনলোড</span>
+          </div>
+          <span class="tile-arrow">↓</span>
+        </button>
+
+      </div>
+
+      <!-- Quick Share Row -->
+      <div class="modal-share-section">
+        <span class="share-label">বন্ধুদের জানান ও ছড়িয়ে দিন:</span>
+        <div class="share-buttons-row">
+          <button id="shareWhatsAppBtn" class="share-pill-btn" aria-label="হোয়াটসঅ্যাপে শেয়ার">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.42 0-2.81-.37-4.04-1.07l-.29-.17-3.11.82.83-3.03-.19-.31a8.21 8.21 0 0 1-1.25-4.43c0-4.54 3.7-8.24 8.24-8.24z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </button>
+
+          <button id="shareFacebookBtn" class="share-pill-btn" aria-label="ফেসবুকে শেয়ার">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span>Facebook</span>
+          </button>
+
+          <button id="shareTwitterBtn" class="share-pill-btn" aria-label="এক্সে (টুইটার) শেয়ার">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>X</span>
+          </button>
+
+          <button id="copyLinkBtn" class="share-pill-btn" aria-label="লিংক কপি করুন">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span id="copyLinkText">লিংক কপি</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Email Notification Signup -->
+      <div class="modal-subscribe-box">
+        <label for="subscriberEmail" class="sub-label">লাইভ সম্প্রচারের আপডেট পেতে আপনার ইমেইল দিন:</label>
+        <form id="subscribeForm" class="sub-form">
+          <input type="email" id="subscriberEmail" placeholder="আপনার ইমেইল লিখুন" required class="sub-input">
+          <button type="submit" class="sub-btn">নিবন্ধন করুন</button>
+        </form>
+        <div id="subSuccessMsg" class="sub-success-msg hidden">ধন্যবাদ! কাউন্টডাউনের বিশেষ নোটিফিকেশন আপনার কাছে পৌঁছাবে।</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-notification hidden" id="toastNotification" role="alert" aria-live="assertive">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMessage">লিংক কপি করা হয়েছে!</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">প্রত্যাবর্তন ২.০</span>
+          <p class="footer-tagline">জয় বাংলা, জয় বঙ্গবন্ধু</p>
+        </div>
+        <div class="footer-dates">
+          <span class="footer-date-pill">১৬ ডিসেম্বর ২০২৬</span>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; ২০২৬ প্রত্যাবর্তন ২.০ ক্যাম্পেইন। সর্বস্বত্ব সংরক্ষিত। মহান বিজয় দিবসের অবিনাশী চেতনা চিরজীবী হোক।
+        </p>
+        <p class="patriotic-salute">জয় বাংলা 🇧🇩 জয় বঙ্গবন্ধু</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

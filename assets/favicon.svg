@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F5B942" stop-opacity="1"/>
+      <stop offset="70%" stop-color="#B5121B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#071C16" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8A3"/>
+      <stop offset="50%" stop-color="#F5B942"/>
+      <stop offset="100%" stop-color="#A57316"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="#071C16" stroke="url(#goldBorder)" stroke-width="3"/>
+  <circle cx="50" cy="50" r="32" fill="#B5121B" opacity="0.9"/>
+  <text x="50" y="58" font-family="'Hind Siliguri', 'Noto Sans Bengali', sans-serif" font-size="28" font-weight="bold" fill="#F5B942" text-anchor="middle" filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.8))">২.০</text>
+</svg>
