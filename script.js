@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     numeralToggle.addEventListener('click', () => {
       useBengaliNumerals = !useBengaliNumerals;
       window.useBengaliNumerals = useBengaliNumerals;
+      document.body.classList.toggle('bengali-numerals', useBengaliNumerals);
       numeralModeLabel.textContent = useBengaliNumerals ? 'বাংলা' : 'EN';
       // Force refresh of digits
       prevTime = { days: -1, hours: -1, minutes: -1, seconds: -1 };
