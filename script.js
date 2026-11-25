@@ -146,10 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (numeralToggle) {
     numeralToggle.addEventListener('click', () => {
       useBengaliNumerals = !useBengaliNumerals;
+      window.useBengaliNumerals = useBengaliNumerals;
       numeralModeLabel.textContent = useBengaliNumerals ? 'বাংলা' : 'EN';
       // Force refresh of digits
       prevTime = { days: -1, hours: -1, minutes: -1, seconds: -1 };
       updateCountdown();
+      if (typeof window.refreshAnalyticsNumerals === 'function') {
+        window.refreshAnalyticsNumerals();
+      }
       showToast(useBengaliNumerals ? 'বাংলা সংখ্যা সক্রিয় করা হয়েছে' : 'English numerals activated');
     });
   }

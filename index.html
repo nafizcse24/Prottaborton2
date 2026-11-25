@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.1">
 </head>
 <body>
 
@@ -498,6 +498,114 @@
           </div>
         </div>
 
+        <!-- PUBLIC VISITOR TRACKING & LIVE ANALYTICS -->
+        <div class="visitor-analytics-section" id="visitorStats" aria-label="লাইভ পরিদর্শন পরিসংখ্যান">
+          <div class="visitor-analytics-header">
+            <div class="analytics-badge-row">
+              <span class="analytics-pill-badge">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>রিয়েল-টাইম অ্যানেলাইটিক্স</span>
+              </span>
+              <div class="live-status-pill status-pending" id="statStatusBadge" title="Supabase লাইভ ডেটাবেস সিঙ্ক">
+                <span class="pulse-ring"></span>
+                <span>সংযোগ নেওয়া হচ্ছে...</span>
+              </div>
+            </div>
+            <h3 class="analytics-main-title">লাইভ পরিদর্শন পরিসংখ্যান</h3>
+            <p class="analytics-sub-title">সুপাবেজ (Supabase) ডেটাবেস থেকে রিয়েল-টাইমে গণনা করা নির্ভুল ও ডি-ডুপ্লিকেটেড তথ্য</p>
+          </div>
+
+          <div class="analytics-cards-grid">
+            
+            <!-- Metric 1: Total Visits -->
+            <div class="stat-card" data-stat="total">
+              <div class="stat-card-glow"></div>
+              <div class="stat-icon-wrapper">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number-box">
+                  <span class="stat-value" id="statTotalVisits">--</span>
+                </div>
+                <div class="stat-meta">
+                  <h4 class="stat-label">মোট পরিদর্শন</h4>
+                  <span class="stat-sublabel">TOTAL VISITS</span>
+                </div>
+              </div>
+              <div class="stat-card-footer">
+                <span class="stat-pill-info">সকল সক্রিয় পরিদর্শন সেশন</span>
+              </div>
+            </div>
+
+            <!-- Metric 2: Unique Visitors -->
+            <div class="stat-card stat-card-featured" data-stat="unique">
+              <div class="stat-card-glow"></div>
+              <div class="stat-featured-badge">অনন্য ভিজিটর</div>
+              <div class="stat-icon-wrapper highlight-icon">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number-box">
+                  <span class="stat-value highlight-number" id="statUniqueVisitors">--</span>
+                </div>
+                <div class="stat-meta">
+                  <h4 class="stat-label">অনন্য দর্শনার্থী</h4>
+                  <span class="stat-sublabel">UNIQUE VISITORS</span>
+                </div>
+              </div>
+              <div class="stat-card-footer">
+                <span class="stat-pill-info">ডি-ডুপ্লিকেটেড বেনামী পরিচয়</span>
+              </div>
+            </div>
+
+            <!-- Metric 3: Today's Visits -->
+            <div class="stat-card" data-stat="today">
+              <div class="stat-card-glow"></div>
+              <div class="stat-icon-wrapper">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number-box">
+                  <span class="stat-value" id="statTodayVisits">--</span>
+                </div>
+                <div class="stat-meta">
+                  <h4 class="stat-label">আজকের পরিদর্শন</h4>
+                  <span class="stat-sublabel">TODAY'S VISITS</span>
+                </div>
+              </div>
+              <div class="stat-card-footer">
+                <span class="stat-pill-info">বাংলাদেশ সময় (UTC+6)</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Transparency & Privacy Assurance Note -->
+          <div class="analytics-transparency-note">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>গোপনীয়তা নিশ্চয়তা: কোনো ব্যক্তিগত সংবেদনশীল তথ্য বা আইপি সংরক্ষণ করা হয় না। সকল তথ্য Supabase PostgreSQL ডেটাবেসে নিরাপদে সংরক্ষিত।</span>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -635,6 +743,10 @@
     </div>
   </footer>
 
+  <!-- Supabase JS Client & Visitor Analytics Engine -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.config.js"></script>
   <script src="script.js"></script>
+  <script src="analytics.js"></script>
 </body>
 </html>
