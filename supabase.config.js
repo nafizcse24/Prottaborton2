@@ -16,8 +16,8 @@
   // Replace the placeholder values with your real Supabase Project credentials:
   // Supabase Dashboard -> Project Settings -> API
   const DEFAULT_CONFIG = {
-    url: 'https://YOUR_PROJECT_ID.supabase.co',
-    anonKey: 'YOUR_SUPABASE_ANON_KEY',
+    url: 'https://gdunfafwrukmsjhivhtt.supabase.co',
+    anonKey: 'sb_publishable_YwqBcVzckttVzJ5ocDev1w_wxiCO3iz',
     
     // Optional: If you deployed Supabase Edge Functions, specify the URLs here.
     // If left empty, the client automatically uses direct PostgreSQL RPC via the Supabase SDK / REST API.
